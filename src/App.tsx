@@ -1,9 +1,9 @@
-import QuoteView from "./features/quote/QuoteView";
+import FactView from "./features/fact/FactView";
 
 function App() {
   return (
     <>
-      <QuoteView />
+      <FactView />
     </>
   );
 }

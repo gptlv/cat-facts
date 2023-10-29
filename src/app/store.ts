@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import quoteReducer from "../features/quote/quoteSlice"
+import { meowfactsApi } from "../services/meowfacts";
+// import quoteReducer from "../features/quote/quoteSlice"
 
 const store = configureStore({
     reducer: {
-        quote: quoteReducer,
-    }
+        [meowfactsApi.reducerPath]: meowfactsApi.reducer,
+        // quote: quoteReducer,
+    },
+    middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(meowfactsApi.middleware)
 })
 
 export default store;

@@ -5,7 +5,6 @@ export const meowfactsApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: "https://meowfacts.herokuapp.com/"}),
     endpoints: (builder) => ({
         getFact: builder.query({
-            // query: ({name, value}: Record<string, string>) => `/?${name}=${value}`
             query: () => "/"
         }),
 

@@ -1,4 +1,14 @@
 import { useGetFactQuery } from "../../services/meowfacts";
+import { Typography, Button, Spin } from "antd";
+const { Title } = Typography;
+
+const style: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  maxWidth: "80%",
+};
 
 const FactView = () => {
   const { data, error, isLoading, refetch } = useGetFactQuery({});
@@ -8,8 +18,8 @@ const FactView = () => {
   };
 
   return (
-    <>
-      {isLoading && <div>Loading...</div>}
+    <div style={style}>
+      {isLoading && <Spin />}
       {!isLoading && error ? (
         <div>
           {"status" in error
@@ -17,10 +27,13 @@ const FactView = () => {
             : "Something went wrong"}
         </div>
       ) : null}
-      {!isLoading && data ? <div>{data.data}</div> : null}
-
-      <button onClick={handleButtonClick}>Get a new fact</button>
-    </>
+      {!isLoading && data ? <Title>{data.data}</Title> : null}
+      {!isLoading && (
+        <Button onClick={handleButtonClick} type="primary" size="large">
+          Get a new fact
+        </Button>
+      )}
+    </div>
   );
 };
 
